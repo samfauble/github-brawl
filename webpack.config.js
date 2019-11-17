@@ -23,10 +23,10 @@ module.exports = {
                 }
             ]
         },
-        plugin: [
+        plugins: [
             new HtmlWebpackPlugin({
                 template: "./app/src/client/index.html",
-                filename: "./dist"
+                filename: "./index.html"
             })
         ]
     }  

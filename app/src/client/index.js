@@ -2,12 +2,12 @@ import "./style/index.scss"
 import React from "react"
 import ReactDOM from "react-dom"
 
-export class App extends Component {
 
+class App extends React.Component {
     render() {
         return (
             <div>
-                Hi!
+               Hello!! 
             </div>
         )
     }
@@ -15,5 +15,6 @@ export class App extends Component {
 
 ReactDOM.render(
     <App />,
-    getElementById("root")
+    document.getElementById("root")
 )
+
