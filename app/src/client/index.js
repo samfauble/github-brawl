@@ -1,3 +1,4 @@
+import "./style/index.scss"
 import React from "react"
 import ReactDOM from "react-dom"
 
@@ -12,4 +13,7 @@ export class App extends Component {
     }
 }
 
-ReactDOM.render()
+ReactDOM.render(
+    <App />,
+    getElementById("root")
+)
