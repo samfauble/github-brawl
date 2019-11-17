@@ -1,3 +1,47 @@
+body, html #app {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
 body {
-    background: purple;
+    background: yellow;
+    font-family: sans-serif;
+}
+
+//Navbar
+
+ul {
+    padding: 0px;
+}
+
+#navList {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navItem {
+    margin: 3px, 10px, 3px, 10px;
+    list-style-type: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.clearButton {
+    background: transparent;
+    border: none;
+}
+
+.navLink {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
 }
