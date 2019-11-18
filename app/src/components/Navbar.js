@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from "prop-types"
+import {fetchRepos} from "../util/api"
 
 function NavContent ({lang, callback}){
     const navbarItems = ["All", "Javascript", "Ruby", "Python", "Java", "CSS"]
@@ -33,13 +34,24 @@ class Navbar extends React.Component{
         super(props)
     
         this.state = {
-            language: "All", 
+            language: "All",
+            repos: null,
+            error: null 
         }
         this.navSelector=this.navSelector.bind(this);
     }
     
-     navSelector(lang){
-        this.setState({language: lang},()=>{console.log(this.state.language)})
+     navSelector(lang){                                                 {/*Given the chosen language, set the new language, refresh errors and repos, and fetch repos for given language*/}
+        this.setState({language: lang, repos: null, error: null },
+            ()=>{console.log(this.state.language)})
+        
+        fetchRepos(lang).then((repos)=>this.setState({
+            repos,
+            error: null
+        }))
+        .catch(()=>{
+            console.warn("Error fetching repos")
+        })
     }
 
     render(){
