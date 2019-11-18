@@ -39,6 +39,7 @@ class Navbar extends React.Component{
             error: null 
         }
         this.navSelector=this.navSelector.bind(this);
+        this.isLoading = this.isLoading.bind(this)
     }
     
      navSelector(lang){                                                 {/*Given the chosen language, set the new language, refresh errors and repos, and fetch repos for given language*/}
@@ -50,15 +51,26 @@ class Navbar extends React.Component{
             error: null
         }))
         .catch(()=>{
-            console.warn("Error fetching repos")
+            console.warn("Error fetching repos", error)
+
+            this.setState({error:"There was an error in fetching the repositoriess"})
         })
     }
 
+
+    isLoading(){
+        return this.state.repos === null && this.state.error===null
+    }
+
     render(){
+        const [lang, repos, error]=this.state
         return (
-        <NavContent 
-        lang={this.state.language} 
-        callback={this.navSelector} />
+        <React.Fragment>
+            <NavContent 
+            lang={this.state.language} 
+            callback={this.navSelector} />
+            {this.isLoading() && <p>LOADING</p>}
+        </React.Fragment>
         )
     }
 
