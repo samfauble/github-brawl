@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import {fetchRepos} from "../util/api"
+import {FaUser, FaStar, FaCodeBranch, FaExclamationTriangle} from "react-icons/fa"
 
 function NavContent ({lang, callback}){
     const navbarItems = ["All", "Javascript", "Ruby", "Python", "Java", "CSS"]
@@ -47,6 +48,26 @@ function ReposGrid({repos}) {
                 <h2 className="centerText">
                     <a className="link" href={html_url}> {login} </a>
                 </h2>
+                <ul className="card-list">
+                    <li>
+                        <FaUser color="blue" size={22}/>
+                        <a href={`https://github.com/${login}`}>
+                            {login}
+                        </a>
+                    </li>
+                    <li>
+                        <FaStar color="blue" size={22}/>
+                        {stargazers_count.toLocaleString()} stars
+                    </li>
+                    <li>
+                        <FaCodeBranch color="blue" size={22}/>
+                        {forks.toLocaleString()} forks
+                    </li>
+                    <li>
+                        <FaExclamationTriangle color="blue" size={22}/>
+                        {open_issues.toLocaleString()} open issues
+                    </li>
+                </ul>
             </li>
         )
             
