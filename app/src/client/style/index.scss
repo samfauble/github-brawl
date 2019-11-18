@@ -5,7 +5,7 @@ body, html #app {
 }
 
 body {
-    background: yellow;
+    background: white;
     font-family: sans-serif;
 }
 
@@ -45,5 +45,77 @@ ul {
     font-weight: bold;
     text-decoration: none;
     color: inherit;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.spaceAround {
+    justify-content: space-around;
+}
+
+.header-lg {
+    font-size: 35px;
+    font-weight: 300;
+    margin: 28px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 3px;
+    margin: 0 auto;
+    display: block;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.link {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-list {
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.card-list li {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.card-list svg {
+    margin-right: 10px;
+}
+
+.card-list a {
+    font-weight: 500;
+    color: inherit;
+}
+
+.bg-light {
+    background: rgba(0, 0, 0, 0.09);
+    border-radius: 3px;
+}
+
+.repo {
+    margin: 10px 0;
+    width: 250px;
+    padding: 20px;
+}
+
+.repo a {
+    text-decoration: none;
+}
+
+.repo img {
+    margin-bottom: 8px;
 }
 

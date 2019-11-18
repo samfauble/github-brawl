@@ -39,7 +39,7 @@ function ReposGrid({repos}) {
         return (
             <li key={html_url} className="repo bg-light">
                 <h4 className="header-lg centerText">
-                    `#{index+1}`
+                    #{index+1}
                 </h4>
                 <img 
                     className="avatar"
