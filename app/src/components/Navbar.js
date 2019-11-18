@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types"
 
 function NavContent ({lang, callback}){
     const navbarItems = ["All", "Javascript", "Ruby", "Python", "Java", "CSS"]
@@ -19,6 +20,11 @@ function NavContent ({lang, callback}){
             </ul>
         </div>
     )
+}
+
+NavContent.propTypes = {
+    lang: PropTypes.string.isRequired,
+    callback: PropTypes.func.isRequired
 }
 
 class Navbar extends React.Component{
