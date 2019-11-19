@@ -47,6 +47,8 @@ ul {
     color: inherit;
 }
 
+//Repo Item
+
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -119,3 +121,100 @@ ul {
     margin-bottom: 8px;
 }
 
+//Brawl Instructions
+
+.header-sm {
+    font-size: 28px;
+    font-weight: 300;
+    margin: 10px;
+}
+
+.instructions-container {
+    margin: 100px 0;
+}
+
+.container-sm {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.battleInstructions {
+    padding: 0;
+    font-size: 25px;
+}
+
+.battleInstructions li {
+    flex: 1;
+    min-width: 300px;
+    list-style-type: none;
+}
+
+.battleInstructions svg {
+    padding: 40px;
+    border-radius: 3px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.player {
+    flex: 1;
+    margin: 0 20px;
+    padding: 10px;
+}
+
+.playerLabel {
+    font-size: 20px;
+    margin: 5px 0;
+    font-weight: 300;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.playerInputs input {
+    padding: 8px;
+    font-size: 16px;
+    flex: 2;
+    border-radius: 3px;
+    border: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.playerInputs .inputLight {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.playerInputs button {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.button {
+    padding: 10px;
+    text-decoration: uppercase;
+    letter-spacing: .25em;
+    border-radius: 3px;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: 200px;
+}
+
+.buttonDark {
+    color: #e6e6e6;
+    background: #141414;
+}
+
+.buttonDark:disabled {
+    background: #f2f2f2;
+    color: #c7c7c7;
+}
