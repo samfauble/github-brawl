@@ -1,0 +1,33 @@
+import React, { Component } from 'react'
+
+export class Loading extends React.Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             content: "Loading"
+        }
+    }
+
+    componentDidMount() {
+        this.interval = window.setInterval(()=>{
+            this.state.content ==="Loading"+"..." ?
+            this.setState({content: "Loading"}) :
+            this.setState(({content})=>({content: content + "."}))
+        }, 300)
+    }
+
+    componentWillUnmount() {
+        window.clearInterval(this.interval)
+    }
+    
+    render() {
+        return (
+            <p>
+               {this.state.content} 
+            </p>
+        )
+    }
+}
+
+export default Loading

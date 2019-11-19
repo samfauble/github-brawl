@@ -2,6 +2,7 @@ import React from 'react'
 import {brawl} from "../util/api"
 import {FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser} from "react-icons/fa"
 import Card from "../components/Card"
+import Loading from "../components/Loading"
 
 
 function ProfileList({profile}) {
@@ -14,7 +15,7 @@ function ProfileList({profile}) {
             {profile.location && (
                 <li>
                     <FaCompass color="purple" size={22} />
-                    {winner.profile.location}
+                    {profile.location}
                 </li>
             )}
             {profile.company && (
@@ -52,7 +53,7 @@ export class Results extends React.Component {
     
 
     componentDidMount() {
-        const {playerOne, playerTwo} = this.props
+        const {playerOne, playerTwo, onReset} = this.props
         brawl([playerOne, playerTwo])
         .then((players)=> {
             this.setState({
@@ -72,14 +73,15 @@ export class Results extends React.Component {
     render() {
         const {winner, loser, error, loading} = this.state
         if(loading===true){
-            return <p>LOADING</p>
+            return <Loading />
         }
 
         if(error){
             return <p className="centerText error">{error}</p>
         }
         return (
-            <div className="grid spaceAround container-sm">
+            <React.Fragment>
+                <div className="grid spaceAround container-sm">
                     <Card 
                     header= {winner.score===loser.score ? "Tie" : "Winner"}
                     subheader= {`Score: ${winner.score.toLocaleString()}`}
@@ -96,9 +98,15 @@ export class Results extends React.Component {
                         href= {loser.profile.html_url}
                         name= {loser.profile.login}>
 
-                            <ProfileList profile={winner.profile} />
+                            <ProfileList profile={loser.profile} />
                         </Card>
-            </div>
+                </div>
+                <button
+                    className="button buttonDark buttonSpace"
+                    onClick={this.props.onReset}>
+                        Reset
+                </button>
+            </React.Fragment>
         )
     }
 }
