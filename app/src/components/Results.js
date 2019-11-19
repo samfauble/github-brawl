@@ -5,6 +5,9 @@ import Card from "../components/Card"
 import Loading from "../components/Loading"
 
 
+
+
+
 function ProfileList({profile}) {
     return(
         <ul className="card-list">
@@ -73,7 +76,7 @@ export class Results extends React.Component {
     render() {
         const {winner, loser, error, loading} = this.state
         if(loading===true){
-            return <Loading />
+            return <Loading text="Fetching Data" />
         }
 
         if(error){

@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import {fetchRepos} from "../util/api"
 import {FaUser, FaStar, FaCodeBranch, FaExclamationTriangle} from "react-icons/fa"
 import Card from "../components/Card"
+import Loading from "../components/Loading"
 
 function NavContent ({lang, callback}){
     const navbarItems = ["All", "Javascript", "Ruby", "Python", "Java", "CSS"]
@@ -128,7 +129,7 @@ class Navbar extends React.Component{
             <NavContent 
             lang={this.state.language} 
             callback={this.navSelector} />
-            {this.isLoading() && <p>LOADING</p>}
+            {this.isLoading() && <Loading />}
             {error && <p clasName="centerText error">error</p>}
             {repos[language] && <ReposGrid repos={repos[language]} />}
         </React.Fragment>
