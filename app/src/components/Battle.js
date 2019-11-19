@@ -1,5 +1,6 @@
 import React from 'react'
 import {FaUserFriends, FaFighterJet, FaTrophy, FaTimesCircle} from "react-icons/fa"
+import Results from "../components/Results"
 
 function Instructions() {
     return(
@@ -107,7 +108,8 @@ export class Battle extends React.Component {
     
         this.state = {
              playerOne: null,
-             playerTwo: null
+             playerTwo: null,
+             battle: false
         }
         this.handleSubmit= this.handleSubmit.bind(this)
         this.handleReset= this.handleReset.bind(this)
@@ -126,7 +128,12 @@ export class Battle extends React.Component {
     }
 
     render() {
-        const {playerOne, playerTwo} = this.state
+        const {playerOne, playerTwo, battle} = this.state
+
+        if(battle===true){
+            return <Results playerOne={playerOne} playerTwo={playerTwo}/>
+        }
+
         return (
             <React.Fragment>
                 <Instructions />
@@ -158,6 +165,13 @@ export class Battle extends React.Component {
                             onReset= {()=> this.handleReset("playerTwo")}/>
                     )}
                 </div>
+                {playerOne && playerTwo && (
+                    <button
+                    className="button buttonDark buttonSpace"
+                    onClick={()=>this.setState({battle: true})}>
+                        Battle
+                    </button>
+                )}
             </React.Fragment>
         )
     }
