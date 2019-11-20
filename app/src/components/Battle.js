@@ -1,28 +1,33 @@
 import React from 'react'
 import {FaUserFriends, FaFighterJet, FaTrophy, FaTimesCircle} from "react-icons/fa"
 import Results from "../components/Results"
+import {ThemeConsumer} from "../contexts/theme"
 
 function Instructions() {
     return(
-        <div className="instructionsContainer">
-            <h1 className= "centerText header-lg">
-            INSTRUCTIONS
-            </h1>
-            <ol className="container-sm grid centerText battleInstructions">
-                <li>
-                    <h3 className="header-sm">Enter two GitHub users</h3>
-                    <FaUserFriends className="bg-light" color="blue" size={140}/>
-                </li>
-                <li>
-                    <h3 className="header-sm">Brawl</h3>
-                    <FaFighterJet className="bg-light" color="blue" size={140}/>
-                </li>
-                <li>
-                    <h3 className="header-sm">See the winners</h3>
-                    <FaTrophy className="bg-light" color="blue" size={140}/>
-                </li>
-            </ol>
-        </div>
+        <ThemeConsumer>
+            {({theme})=>(
+                <div className="instructionsContainer">
+                    <h1 className= "centerText header-lg">
+                    INSTRUCTIONS
+                    </h1>
+                    <ol className="container-sm grid centerText battleInstructions">
+                        <li>
+                            <h3 className="header-sm">Enter two GitHub users</h3>
+                            <FaUserFriends className={`bg-${theme}`} color="blue" size={140}/>
+                        </li>
+                        <li>
+                            <h3 className="header-sm">Brawl</h3>
+                            <FaFighterJet className={`bg-${theme}`} color="blue" size={140}/>
+                        </li>
+                        <li>
+                            <h3 className="header-sm">See the winners</h3>
+                            <FaTrophy className={`bg-${theme}`} color="blue" size={140}/>
+                        </li>
+                    </ol>
+                </div>
+            )}
+        </ThemeConsumer>
     )
 }
 
@@ -51,54 +56,63 @@ class Players extends React.Component {
     
     render() {
         return (
-            <form className="column player" onSubmit={this.handleSubmit}>
-                <label htmlFor="username" className="playerLabel">
-                    {this.props.label}
-                </label>
-                <div className="row playerInputs">
-                    <input
-                        id="username"
-                        className="inputLight"
-                        placeholder="github username"
-                        autoComplete="off"
-                        value={this.state.username}
-                        onChange={this.playerChange}  
-                        type="text" />
-                    <button 
-                        type="submit" 
-                        className="button buttonDark" 
-                        disabled={!this.state.username}>
-                        Submit
-                </button>
-                </div>
-            </form>
+            <ThemeConsumer>
+                {({theme})=>(
+                     <form className="column player" onSubmit={this.handleSubmit}>
+                     <label htmlFor="username" className="playerLabel">
+                         {this.props.label}
+                     </label>
+                     <div className="row playerInputs">
+                         <input
+                             id="username"
+                             className={`input${theme}`}
+                             placeholder="github username"
+                             autoComplete="off"
+                             value={this.state.username}
+                             onChange={this.playerChange}  
+                             type="text" />
+                         <button 
+                             type="submit" 
+                             className={`button ${theme==="dark" ? "buttonlight" : "buttondark"}`}
+                             disabled={!this.state.username}>
+                             Submit
+                     </button>
+                     </div>
+                 </form>
+                )}
+            </ThemeConsumer>
         )
     }
 }
 
 function PlayerPreview ({username, onReset, label}) {
     return (
-        <div className="column player">
-            <h3 className="playerLabel">{label}</h3>
-            <div className="row bg-light">
-                <div className="playerInfo">
-                    <img 
-                        className="avatarSmall"
-                        src= {`http://github.com/${username}.png?size=200`}
-                        alt={`Image for ${username}`} />
-                    <a
-                        href={`http://github.com/${username}`}
-                        className="link">
-                            {username}
-                    </a>
+        <ThemeConsumer>
+            {({theme})=>(
+                <div className="column player">
+                    <h3 className="playerLabel">{label}</h3>
+                    <div className={`row bg-${theme}`}>
+                        <div className="playerInfo">
+                            <img 
+                            className="avatarSmall"
+                            src= {`http://github.com/${username}.png?size=200`}
+                            alt={`Image for ${username}`} />
+                            <a
+                            href={`http://github.com/${username}`}
+                            className="link">
+                                {username}
+                            </a>
+                        </div>
+                        <button 
+                        className="clearButton flex-center"
+                        onClick={onReset}>
+                            <FaTimesCircle color="red" size={26} />
+                        </button>
+                    </div>
                 </div>
-                <button 
-                className="clearButton flex-center"
-                onClick={onReset}>
-                    <FaTimesCircle color="red" size={26} />
-                </button>
-            </div>
-        </div>
+            )}
+
+        </ThemeConsumer>
     )
 }
 

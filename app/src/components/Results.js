@@ -3,41 +3,50 @@ import {brawl} from "../util/api"
 import {FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser} from "react-icons/fa"
 import Card from "../components/Card"
 import Loading from "../components/Loading"
+import Tooltip from "./Tooltip"
 
 
 
+export class ProfileList extends React.Component {
+    
+    render() {
+        const {profile} = this.props
 
-
-function ProfileList({profile}) {
-    return(
-        <ul className="card-list">
-            <li>
-                 <FaUser color="purple" size={22} />
-                {profile.name}
-            </li>
-            {profile.location && (
+        return(
+            <ul className="card-list">
                 <li>
-                    <FaCompass color="purple" size={22} />
-                    {profile.location}
+                     <FaUser color="purple" size={22} />
+                    {profile.name}
                 </li>
-            )}
-            {profile.company && (
+                {profile.location && (
+                    <Tooltip text="User's Location">
+                        <li>
+                            <FaCompass color="purple" size={22} />
+                            {profile.location}
+                        </li>
+                    </Tooltip>
+                )}
+                {profile.company && (
+                    <Tooltip text="User's Company">
+                        <li>
+                            <FaBriefcase color="purple" size={22} />
+                            {profile.company}
+                        </li>
+                    </Tooltip>
+                )}
                 <li>
-                    <FaBriefcase color="purple" size={22} />
-                    {profile.company}
+                    <FaUsers color="purple" size={22} />
+                    {profile.followers.toLocaleString()} followers
                 </li>
-            )}
-            <li>
-                <FaUsers color="purple" size={22} />
-                {profile.followers.toLocaleString()} followers
-            </li>
-            <li>
-                <FaUserFriends color="purple" size={22} />
-                {profile.following.toLocaleString()} following
-            </li>
-        </ul>
-    )
+                <li>
+                    <FaUserFriends color="purple" size={22} />
+                    {profile.following.toLocaleString()} following
+                </li>
+            </ul>
+        )
+    }
 }
+
 
 
 
