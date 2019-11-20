@@ -17,7 +17,7 @@ function NavContent ({lang, callback}){
                     <button 
                     className="clearButton navLink"
                     onClick={()=>callback(item)}
-                    style={item==={lang} ? {color:"black"} : {color: "black"}}> 
+                    style={item===lang ? {color:"red"} : null}> 
                         {item}
                     </button>
                 </li>

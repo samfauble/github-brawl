@@ -4,6 +4,8 @@ import {FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser} from "re
 import Card from "../components/Card"
 import Loading from "../components/Loading"
 import Tooltip from "./Tooltip"
+import queryString from "query-string"
+import {Link} from "react-router-dom"
 
 
 
@@ -65,7 +67,8 @@ export class Results extends React.Component {
     
 
     componentDidMount() {
-        const {playerOne, playerTwo, onReset} = this.props
+        debugger
+        const {playerOne, playerTwo} = queryString.parse(this.props.location.search)
         brawl([playerOne, playerTwo])
         .then((players)=> {
             this.setState({
@@ -113,11 +116,10 @@ export class Results extends React.Component {
                             <ProfileList profile={loser.profile} />
                         </Card>
                 </div>
-                <button
+                <Link
                     className="button buttonDark buttonSpace"
-                    onClick={this.props.onReset}>
-                        Reset
-                </button>
+                    to="/battle">
+                </Link>
             </React.Fragment>
         )
     }
