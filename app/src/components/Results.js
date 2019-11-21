@@ -117,8 +117,9 @@ export class Results extends React.Component {
                         </Card>
                 </div>
                 <Link
-                    className="button buttonDark buttonSpace"
+                    className="button buttondark buttonSpace"
                     to="/battle">
+                        Reset
                 </Link>
             </React.Fragment>
         )

@@ -15,15 +15,15 @@ function Instructions() {
                     <ol className="container-sm grid centerText battleInstructions">
                         <li>
                             <h3 className="header-sm">Enter two GitHub users</h3>
-                            <FaUserFriends className={`bg-${theme}`} color="blue" size={140}/>
+                            <FaUserFriends className={`bg-${theme}`} color="rgb(226, 79, 35)" size={140}/>
                         </li>
                         <li>
                             <h3 className="header-sm">Brawl</h3>
-                            <FaFighterJet className={`bg-${theme}`} color="blue" size={140}/>
+                            <FaFighterJet className={`bg-${theme}`} color="rgb(69, 92, 63)" size={140}/>
                         </li>
                         <li>
                             <h3 className="header-sm">See the winners</h3>
-                            <FaTrophy className={`bg-${theme}`} color="blue" size={140}/>
+                            <FaTrophy className={`bg-${theme}`} color="rgb(159, 18, 200)" size={140}/>
                         </li>
                     </ol>
                 </div>
@@ -177,7 +177,7 @@ export class Battle extends React.Component {
                 </div>
                 {playerOne && playerTwo && (
                     <Link
-                    className="button buttonDark buttonSpace"
+                    className="button buttondark buttonSpace"
                     to={{
                         pathname: "/battle/results",
                         search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`

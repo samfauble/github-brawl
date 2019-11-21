@@ -57,15 +57,15 @@ function ReposGrid({repos}) {
                             </li>
                         </Tooltip>
                         <li>
-                            <FaStar color="blue" size={22}/>
+                            <FaStar color="rgb(206, 206, 0)" size={22}/>
                             {stargazers_count.toLocaleString()} stars
                         </li>
                         <li>
-                            <FaCodeBranch color="blue" size={22}/>
+                            <FaCodeBranch color="#33cc33" size={22}/>
                             {forks.toLocaleString()} forks
                         </li>
                         <li>
-                            <FaExclamationTriangle color="blue" size={22}/>
+                            <FaExclamationTriangle color="rgb(226, 79, 35)" size={22}/>
                             {open_issues.toLocaleString()} open issues
                         </li>
                     </ul>
