@@ -6,6 +6,7 @@ import Loading from "../components/Loading"
 import Tooltip from "./Tooltip"
 import queryString from "query-string"
 import {Link} from "react-router-dom"
+import { ThemeConsumer } from '../contexts/theme'
 
 
 
@@ -67,7 +68,6 @@ export class Results extends React.Component {
     
 
     componentDidMount() {
-        debugger
         const {playerOne, playerTwo} = queryString.parse(this.props.location.search)
         brawl([playerOne, playerTwo])
         .then((players)=> {
@@ -95,7 +95,9 @@ export class Results extends React.Component {
             return <p className="centerText error">{error}</p>
         }
         return (
-            <React.Fragment>
+            <ThemeConsumer>
+                {({theme})=>(
+                <React.Fragment>
                 <div className="grid spaceAround container-sm">
                     <Card 
                     header= {winner.score===loser.score ? "Tie" : "Winner"}
@@ -113,15 +115,18 @@ export class Results extends React.Component {
                         href= {loser.profile.html_url}
                         name= {loser.profile.login}>
 
-                            <ProfileList profile={loser.profile} />
-                        </Card>
-                </div>
-                <Link
-                    className="button buttondark buttonSpace"
+                        <ProfileList profile={loser.profile} />
+                    </Card>
+                    </div>
+                    <Link
+                    className={`button button${theme==="dark" ? "light" : "dark"} buttonSpace`}
                     to="/battle">
                         Reset
-                </Link>
-            </React.Fragment>
+                    </Link>
+                </React.Fragment>
+                )}
+
+            </ThemeConsumer>
         )
     }
 }

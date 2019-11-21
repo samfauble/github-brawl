@@ -145,47 +145,51 @@ export class Battle extends React.Component {
         const {playerOne, playerTwo} = this.state
 
         return (
-            <React.Fragment>
-                <Instructions />
-                <div className="playersContainer">
-                    <h1 className="centerText header-lg">Players</h1>
-                </div>
-                <div className="row space-around">
-                    {playerOne===null ? (
-                        <Players 
-                            label="Player One"
-                            onSubmit={(username)=>{this.handleSubmit("playerOne", username)}} />
-                    ) : (
-                        (
-                        <PlayerPreview 
-                            username={playerOne}
-                            label= "Player One" 
-                            onReset= {()=> this.handleReset("playerOne")}/>
-                        )
-                    )}
+            <ThemeConsumer>
+                {({theme})=> (
+                    <React.Fragment>
+                        <Instructions />
+                        <div className="playersContainer">
+                            <h1 className="centerText header-lg">Players</h1>
+                        </div>
+                        <div className="row space-around">
+                            {playerOne===null ? (
+                                <Players 
+                                label="Player One"
+                                onSubmit={(username)=>{this.handleSubmit("playerOne", username)}} />
+                                ) : (
+                                (
+                                <PlayerPreview 
+                                username={playerOne}
+                                label= "Player One" 
+                                onReset= {()=> this.handleReset("playerOne")}/>
+                                )
+                            )}
                     
-                    {playerTwo===null ? (
-                        <Players 
-                            label="Player Two"
-                            onSubmit={(username) =>{this.handleSubmit("playerTwo", username)}} />
-                    ) : (
-                        <PlayerPreview 
-                            username={playerTwo}
-                            label= "Player Two" 
-                            onReset= {()=> this.handleReset("playerTwo")}/>
-                    )}
-                </div>
-                {playerOne && playerTwo && (
-                    <Link
-                    className="button buttondark buttonSpace"
-                    to={{
-                        pathname: "/battle/results",
-                        search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
-                    }}>
-                        Battle
-                    </Link>
+                            {playerTwo===null ? (
+                                <Players 
+                                label="Player Two"
+                                onSubmit={(username) =>{this.handleSubmit("playerTwo", username)}} />
+                                ) : (
+                                <PlayerPreview 
+                                username={playerTwo}
+                                label= "Player Two" 
+                                onReset= {()=> this.handleReset("playerTwo")}/>
+                            )}
+                        </div>
+                        {playerOne && playerTwo && (
+                            <Link
+                            className={`button button${theme==="dark" ? "light" : "dark"} buttonSpace`}
+                            to={{
+                            pathname: "/battle/results",
+                            search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
+                            }}>
+                                Battle
+                            </Link>
+                        )}
+                    </React.Fragment>
                 )}
-            </React.Fragment>
+            </ThemeConsumer>
         )
     }
 }
