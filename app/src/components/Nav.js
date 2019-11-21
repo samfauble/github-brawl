@@ -11,7 +11,7 @@ export function Nav() {
     return (
         <ThemeConsumer>
             {({theme, toggleTheme}) => (
-                <nav className="row space-between">
+                <nav className="row spaceBetween">
                     <ul className="row nav">
                         <li>
                             <NavLink 

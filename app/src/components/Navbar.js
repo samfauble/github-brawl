@@ -10,7 +10,6 @@ function NavContent ({lang, callback}){
     const navbarItems = ["All", "Javascript", "Ruby", "Python", "Java", "CSS"]
     return (
         <div>
-            <h1>Navigation</h1>
             <ul id="navList">
             {navbarItems.map((item)=>(
                 <li className="navItem" key={item}>
