@@ -1,6 +1,7 @@
 const path = require("path")
 const webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
 
 
 module.exports = {
@@ -28,7 +29,10 @@ module.exports = {
             new HtmlWebpackPlugin({
                 template: "./src/client/index.html",
                 filename: "./index.html"
-            })
+            }),
+            new CopyPlugin([
+                {from: "_redirects"}
+            ])
         ],
         devServer: {
             historyApiFallback: true
